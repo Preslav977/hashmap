@@ -1,4 +1,4 @@
-import Node from "./Node";
+import Node from "./Node.js";
 
 class LinkedList {
   head;
@@ -21,17 +21,20 @@ class LinkedList {
     }
   }
 
-  prepend(value) {
+  prepend(key, value) {
     if (!this.head) {
-      this.head = new Node(value);
+      this.head = new Node(key, value);
       console.log(this.head);
       this.countNodes += 1;
+
+      // return this.head;
     } else {
-      const newNode = new Node(value);
+      const newNode = new Node(key, value);
       newNode.nextNode = this.head;
       this.head = newNode;
       console.log(this.head);
       this.countNodes += 1;
+      // return this.head;
     }
   }
 
@@ -58,21 +61,21 @@ class LinkedList {
     }
   }
 
-  at(index) {
+  at(key) {
     let nodePosition = 0;
     let searchForNode = this.head;
 
-    if (nodePosition === 0 && index === 0) {
+    if (nodePosition === 0 && key === key) {
       // console.log(searchForNode);
       return searchForNode;
     }
 
-    while (searchForNode !== index) {
+    while (searchForNode !== key) {
       nodePosition += 1;
       searchForNode = searchForNode.nextNode;
       // console.log("This is the the wanted index", index);
       // console.log("This is the node position", nodePosition);
-      if (index === nodePosition) {
+      if (key === nodePosition) {
         return searchForNode;
       }
     }
@@ -100,41 +103,43 @@ class LinkedList {
     }
   }
 
-  contains(value) {
+  contains(key) {
     let searchValue = this.head;
 
-    if (searchValue.value === value) {
+    if (searchValue === undefined) {
+      return false;
+    }
+
+    if (searchValue.key === key) {
       return true;
     }
 
-    while (searchValue.value !== value) {
+    while (searchValue.key !== key) {
       searchValue = searchValue.nextNode;
 
-      if (searchValue.value === value) {
-        return true;
+      if (searchValue === null) {
+        return false;
       }
 
-      if (searchValue.nextNode === null) {
-        // console.log(searchValue.value);
-        // console.log(value);
-        return false;
+      if (searchValue.key === key) {
+        return true;
       }
     }
   }
 
-  findValue(value) {
+  findKey(key) {
     let nodePosition = 0;
     let searchNodeIndex = this.head;
 
-    if (searchNodeIndex.value === value && nodePosition === 0) {
+    if (searchNodeIndex.key === key && nodePosition === 0) {
       // console.log(nodePosition);
       return nodePosition;
     }
 
-    while (searchNodeIndex.value !== value) {
+    while (searchNodeIndex.key !== key) {
       nodePosition += 1;
       searchNodeIndex = searchNodeIndex.nextNode;
-      if (searchNodeIndex.value === value) {
+      if (searchNodeIndex.key === key) {
         // console.log(nodePosition);
         return nodePosition;
       }

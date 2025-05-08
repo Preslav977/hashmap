@@ -1,3 +1,7 @@
+import LinkedList from "./LinkedList.js";
+
+const buckets = new LinkedList();
+
 class HashMap {
   loadFactor = 0.8;
 
@@ -13,6 +17,18 @@ class HashMap {
     }
 
     return hashCode;
+  }
+
+  set(key, value) {
+    const checkIfKeyExists = buckets.contains(key);
+
+    if (!checkIfKeyExists) {
+      buckets.prepend(key, value);
+    } else {
+      const findAndReplaceTheValueOfExistingKey = buckets.at(key);
+      findAndReplaceTheValueOfExistingKey.value = value;
+      return findAndReplaceTheValueOfExistingKey;
+    }
   }
 }
 

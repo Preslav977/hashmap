@@ -1,7 +1,16 @@
 class Node {
-  constructor(value = null, nextNode = null) {
+  constructor(key = null, value = null, nextNode = null) {
+    this.key = key;
     this.value = value;
     this.nextNode = nextNode;
+  }
+
+  get key() {
+    return this._key;
+  }
+
+  set key(key) {
+    this._key = key;
   }
 
   get value() {
