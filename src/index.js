@@ -2,19 +2,19 @@ import HashMap from "./HashMap.js";
 
 const hashmap = new HashMap();
 
-hashmap.hash("preslaw");
+console.log(hashmap.hash("preslaw"));
 
-hashmap.hash("Rama");
+console.log(hashmap.hash("Rama"));
 
-hashmap.hash("Sita");
+console.log(hashmap.hash("Sita"));
 
-hashmap.set("preslaw", "test");
+console.log(hashmap.set("preslaw", "test"));
 
-hashmap.set("Rama", "rama value");
+console.log(hashmap.set("preslaw", "test123"));
 
-hashmap.set("Sita", "sima value");
+console.log(hashmap.set("Sita", "sita value"));
 
-// console.log(hashmap.set("Sita", "new value"));
+console.log(hashmap.set("Rama", "rama value"));
 
 // console.log(hashmap.set("preslaw", "test123"));
 

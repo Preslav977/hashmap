@@ -1,6 +1,12 @@
 import LinkedList from "./LinkedList.js";
 
-const buckets = new LinkedList();
+const buckets = [];
+
+for (let i = 0; i < 16; i++) {
+  const linkedList = new LinkedList();
+
+  buckets.push(linkedList);
+}
 
 class HashMap {
   loadFactor = 0.8;
@@ -20,14 +26,14 @@ class HashMap {
   }
 
   set(key, value) {
-    const checkIfKeyExists = buckets.contains(key);
+    const index = this.hash(key);
 
-    if (!checkIfKeyExists) {
-      buckets.prepend(key, value);
+    if (!buckets[index].contains(key)) {
+      return buckets[index].prepend(key, value);
     } else {
-      const findAndReplaceTheValueOfExistingKey = buckets.at(key);
-      findAndReplaceTheValueOfExistingKey.value = value;
-      return findAndReplaceTheValueOfExistingKey;
+      buckets[index].head.value = value;
+
+      return buckets[index].head;
     }
   }
 }

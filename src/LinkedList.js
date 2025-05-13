@@ -1,9 +1,9 @@
 import Node from "./Node.js";
 
 class LinkedList {
-  head;
+  head = null;
 
-  tail;
+  tail = null;
 
   countNodes = 0;
 
@@ -62,20 +62,24 @@ class LinkedList {
   }
 
   at(key) {
-    let nodePosition = 0;
     let searchForNode = this.head;
 
-    if (nodePosition === 0 && key === key) {
-      // console.log(searchForNode);
+    if (searchForNode === null) {
+      return null;
+    }
+
+    if (searchForNode.key === key) {
       return searchForNode;
     }
 
     while (searchForNode !== key) {
-      nodePosition += 1;
       searchForNode = searchForNode.nextNode;
-      // console.log("This is the the wanted index", index);
-      // console.log("This is the node position", nodePosition);
-      if (key === nodePosition) {
+
+      if (searchForNode === null) {
+        return null;
+      }
+
+      if (searchForNode.key === key) {
         return searchForNode;
       }
     }
@@ -106,7 +110,7 @@ class LinkedList {
   contains(key) {
     let searchValue = this.head;
 
-    if (searchValue === undefined) {
+    if (searchValue === null) {
       return false;
     }
 
