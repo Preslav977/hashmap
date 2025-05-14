@@ -78,7 +78,7 @@ class LinkedList {
       return searchForNode;
     }
 
-    while (searchForNode !== key) {
+    while (searchForNode.key !== key) {
       searchForNode = searchForNode.nextNode;
 
       if (searchForNode === null) {

@@ -41,7 +41,6 @@ class HashMap {
     const index = this.hash(key);
 
     if (index < 0 || index >= buckets.length) {
-      console.log(buckets.length);
       throw new Error("Trying to access index out of bounds");
     }
     const findIfHashExistsWithThatKey = buckets[index].at(key);
@@ -53,6 +52,15 @@ class HashMap {
     findIfHashExistsWithThatKey.key === key;
 
     return findIfHashExistsWithThatKey;
+  }
+
+  has(key) {
+    const index = this.hash(key);
+
+    if (buckets[index].contains(key)) {
+      return true;
+    }
+    return false;
   }
 }
 

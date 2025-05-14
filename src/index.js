@@ -22,6 +22,8 @@ console.log(hashmap.set("Rama", "new rama value"));
 
 console.log(hashmap.get("preslaw"));
 
+console.log(hashmap.has("preslaw"));
+
 // console.log(hashmap.set("preslaw", "test123"));
 
 // console.log(hashmap.set("preslaw", "testing"));
