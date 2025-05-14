@@ -62,6 +62,16 @@ class HashMap {
     }
     return false;
   }
+
+  remove(key) {
+    const index = this.hash(key);
+
+    console.log(buckets);
+
+    if (buckets[index].at(key)) {
+      // return buckets[index].removeNode(key);
+    }
+  }
 }
 
 export default HashMap;

@@ -42,6 +42,7 @@ class LinkedList {
       this.head = newNode;
 
       this.countNodes += 1;
+
       return this.head;
     }
   }
@@ -173,6 +174,30 @@ class LinkedList {
     }
     convertToStringsLists += " null";
     return convertToStringsLists;
+  }
+
+  removeNode(key) {
+    const headOfList = this.head;
+    let removeNextNodeAfterHead = this.head;
+
+    if (this.head.key === key && this.head.nextNode === null) {
+      this.head = this.head.nextNode;
+
+      return true;
+    } else {
+      while (removeNextNodeAfterHead !== null) {
+        if (
+          removeNextNodeAfterHead.key === key &&
+          removeNextNodeAfterHead.nextNode !== null
+        ) {
+          removeNextNodeAfterHead.nextNode = null;
+
+          return headOfList;
+        }
+
+        removeNextNodeAfterHead = removeNextNodeAfterHead.nextNode;
+      }
+    }
   }
 }
 
