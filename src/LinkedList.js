@@ -7,45 +7,51 @@ class LinkedList {
 
   countNodes = 0;
 
-  append(value) {
+  append(key, value) {
     if (!this.head) {
-      const newNode = new Node(value);
+      const newNode = new Node(key, value);
+
+      this.countNodes += 1;
+
       this.head = newNode;
-      console.log(this.head);
-      this.countNodes += 1;
+
+      return this.head;
     } else {
-      this.tail = new Node(value);
+      this.tail = new Node(key, value);
+
       this.head.nextNode = this.tail;
-      console.log(this.head);
+
       this.countNodes += 1;
+
+      return this.head;
     }
   }
 
   prepend(key, value) {
     if (!this.head) {
       this.head = new Node(key, value);
-      console.log(this.head);
+
       this.countNodes += 1;
 
-      // return this.head;
+      return this.head;
     } else {
       const newNode = new Node(key, value);
+
       newNode.nextNode = this.head;
+
       this.head = newNode;
-      console.log(this.head);
+
       this.countNodes += 1;
-      // return this.head;
+      return this.head;
     }
   }
 
   size() {
-    console.log(this.countNodes);
     return this.countNodes;
   }
 
   findHead() {
     if (this.head) {
-      // console.log(this.head);
       return this.head;
     }
   }
