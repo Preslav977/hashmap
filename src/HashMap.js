@@ -66,11 +66,12 @@ class HashMap {
   remove(key) {
     const index = this.hash(key);
 
-    console.log(buckets);
+    console.log(buckets[index].removeNode(key));
 
-    if (buckets[index].at(key)) {
-      // return buckets[index].removeNode(key);
-    }
+    //   if (buckets[index].removeNode(key) !== null) {
+    //     return true;
+    //   }
+    //   return false;
   }
 }
 

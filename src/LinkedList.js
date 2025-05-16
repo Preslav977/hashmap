@@ -23,6 +23,8 @@ class LinkedList {
 
       this.countNodes += 1;
 
+      this.head = this.tail;
+
       return this.head;
     }
   }
@@ -177,26 +179,43 @@ class LinkedList {
   }
 
   removeNode(key) {
-    const headOfList = this.head;
-    let removeNextNodeAfterHead = this.head;
+    let previousNode = this.head;
+    let currentNode = this.head;
 
-    if (this.head.key === key && this.head.nextNode === null) {
+    if (currentNode === null) {
+      return false;
+    }
+
+    if (currentNode.key === key) {
       this.head = this.head.nextNode;
 
-      return true;
-    } else {
-      while (removeNextNodeAfterHead !== null) {
-        if (
-          removeNextNodeAfterHead.key === key &&
-          removeNextNodeAfterHead.nextNode !== null
-        ) {
-          removeNextNodeAfterHead.nextNode = null;
+      return this.head;
+    }
 
-          return headOfList;
-        }
+    while (currentNode.key !== key) {
+      currentNode = currentNode.nextNode;
 
-        removeNextNodeAfterHead = removeNextNodeAfterHead.nextNode;
+      if (currentNode.key === key) {
+        previousNode.nextNode = null;
+        this.countNodes -= 1;
+        return true;
       }
+
+      // if (currentNode.key === key) {
+      //   const getTheNextNodeAfterDeletingTheCurrent = currentNode.nextNode;
+      //   // console.log(
+      //   //   "Get the node after the is removed",
+      //   //   getTheNextNodeAfterDeletingTheCurrent,
+      //   // );
+
+      //   previousNode.nextNode = getTheNextNodeAfterDeletingTheCurrent;
+
+      //   return true;
+      // }
+
+      // if (currentNode.nextNode === null) {
+      //   return false;
+      // }
     }
   }
 }
