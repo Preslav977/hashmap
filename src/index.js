@@ -22,7 +22,7 @@ hashmap.hash("sita");
 
 console.log(hashmap.set("Sita", "sita value"));
 
-// console.log(hashmap.set("sita", "sita with lower case s"));
+console.log(hashmap.set("sita", "sita with lower case s"));
 
 // console.log(hashmap.set("Sita", "sita value"));
 
@@ -34,14 +34,6 @@ console.log(hashmap.set("Rama", "rama value"));
 
 // console.log(hashmap.has("preslaw"));
 
-console.log(hashmap.remove("Rama"));
+console.log(hashmap.remove("sita"));
 
-console.log(hashmap.get("Sita"));
-
-// console.log(hashmap.remove("tupanQ"));
-
-// console.log(hashmap.get("tupanq"));
-
-// console.log(hashmap.set("preslaw", "test123"));
-
-// console.log(hashmap.set("preslaw", "testing"));
+// console.log(hashmap.get("Sita"));

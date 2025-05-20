@@ -179,7 +179,8 @@ class LinkedList {
   }
 
   removeNode(key) {
-    let previousNode = this.head;
+    let previousNode = null;
+
     let currentNode = this.head;
 
     if (currentNode === null) {
@@ -188,34 +189,18 @@ class LinkedList {
 
     if (currentNode.key === key) {
       this.head = this.head.nextNode;
-
       return this.head;
     }
 
-    while (currentNode.key !== key) {
-      currentNode = currentNode.nextNode;
-
+    while (currentNode !== null) {
       if (currentNode.key === key) {
-        previousNode.nextNode = null;
-        this.countNodes -= 1;
-        return true;
+        previousNode.nextNode = currentNode.nextNode;
+        return previousNode;
       }
 
-      // if (currentNode.key === key) {
-      //   const getTheNextNodeAfterDeletingTheCurrent = currentNode.nextNode;
-      //   // console.log(
-      //   //   "Get the node after the is removed",
-      //   //   getTheNextNodeAfterDeletingTheCurrent,
-      //   // );
+      previousNode = currentNode;
 
-      //   previousNode.nextNode = getTheNextNodeAfterDeletingTheCurrent;
-
-      //   return true;
-      // }
-
-      // if (currentNode.nextNode === null) {
-      //   return false;
-      // }
+      currentNode = currentNode.nextNode;
     }
   }
 }
