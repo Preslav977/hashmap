@@ -41,3 +41,7 @@ console.log(hashmap.remove("Sita"));
 console.log(hashmap.get("Rama"));
 
 console.log(hashmap.length());
+
+console.log(hashmap.clear());
+
+console.log(hashmap.length());

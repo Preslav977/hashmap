@@ -75,7 +75,30 @@ class HashMap {
 
   length() {
     const findStoredKeys = buckets.find((bucket) => bucket.countNodes !== 0);
-    return findStoredKeys.countNodes;
+
+    if (findStoredKeys === undefined) {
+      return 0;
+    } else {
+      return findStoredKeys.countNodes;
+    }
+  }
+
+  clear() {
+    const findKeys = buckets.find(
+      (bucket) => bucket.head !== null || bucket.tail !== null,
+    );
+
+    if (findKeys.head !== null) {
+      findKeys.head = null;
+
+      findKeys.countNodes = 0;
+    }
+
+    if (findKeys.tail !== null) {
+      findKeys.tail = null;
+
+      findKeys.countNodes = 0;
+    }
   }
 }
 
