@@ -72,6 +72,11 @@ class HashMap {
       return false;
     }
   }
+
+  length() {
+    const findStoredKeys = buckets.find((bucket) => bucket.countNodes !== 0);
+    return findStoredKeys.countNodes;
+  }
 }
 
 export default HashMap;
