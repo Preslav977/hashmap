@@ -28,12 +28,22 @@ class HashMap {
   set(key, value) {
     const index = this.hash(key);
 
-    if (!buckets[index].contains(key)) {
-      return buckets[index].prepend(key, value);
-    } else {
-      buckets[index].head.value = value;
+    if (this.capacity * this.loadFactor > 12.8) {
+      for (let i = 0; i < 32; i++) {
+        const linkedList = new LinkedList();
 
-      return buckets[index].head;
+        buckets.push(linkedList);
+      }
+    } else {
+      if (!buckets[index].contains(key)) {
+        return buckets[index].prepend(key, value);
+      } else {
+        let findNodeWithThatKey = buckets[index].at(key);
+
+        findNodeWithThatKey.value = value;
+
+        return findNodeWithThatKey;
+      }
     }
   }
 
@@ -74,31 +84,32 @@ class HashMap {
   }
 
   length() {
-    const findStoredKeys = buckets.find((bucket) => bucket.countNodes !== 0);
+    const findStoredKeys = buckets.filter((bucket) => bucket.countNodes !== 0);
 
-    if (findStoredKeys === undefined) {
+    if (findStoredKeys.length === 0) {
       return 0;
     } else {
-      return findStoredKeys.countNodes;
+      const countAllNodes = findStoredKeys.reduce(
+        (a, b) => a + b.countNodes,
+        0,
+      );
+
+      return countAllNodes;
     }
   }
 
   clear() {
-    const findKeys = buckets.find(
+    const findKeys = buckets.filter(
       (bucket) => bucket.head !== null || bucket.tail !== null,
     );
 
-    if (findKeys.head !== null) {
-      findKeys.head = null;
+    findKeys.map((bucket) => {
+      bucket.head = null;
 
-      findKeys.countNodes = 0;
-    }
+      bucket.countNodes = 0;
+    });
 
-    if (findKeys.tail !== null) {
-      findKeys.tail = null;
-
-      findKeys.countNodes = 0;
-    }
+    // console.log(buckets);
   }
 
   keys() {
@@ -143,6 +154,30 @@ class HashMap {
     });
 
     return pushValues;
+  }
+
+  entries() {
+    const pushKeyWithValue = [];
+
+    const filterKeyWithValue = buckets.filter(
+      (buckets) => buckets.head !== null,
+    );
+
+    filterKeyWithValue.filter((bucket) => {
+      const copyOfBuckets = Object.assign({}, bucket);
+
+      while (copyOfBuckets.head !== null) {
+        pushKeyWithValue.push([
+          copyOfBuckets.head.key,
+
+          copyOfBuckets.head.value,
+        ]);
+
+        copyOfBuckets.head = copyOfBuckets.head.nextNode;
+      }
+    });
+
+    return pushKeyWithValue;
   }
 }
 

@@ -1,49 +1,77 @@
 import HashMap from "./HashMap.js";
 
-const hashmap = new HashMap();
+const test = new HashMap();
 
-hashmap.hash("preslaw");
+console.log(test.set("apple", "red"));
 
-hashmap.hash("Rama");
+console.log(test.set("banana", "yellow"));
 
-hashmap.hash("rama");
+console.log(test.set("carrot", "orange"));
 
-hashmap.hash("Sita");
+console.log(test.set("dog", "brown"));
 
-hashmap.hash("sita");
+console.log(test.set("elephant", "gray"));
 
-// console.log(hashmap.set("preslaw", "test"));
+console.log(test.set("frog", "green"));
 
-// console.log(hashmap.set("Sita", "new sita value"));
+console.log(test.set("grape", "purple"));
 
-// console.log(hashmap.set("Rama", "rama value"));
+console.log(test.set("hat", "black"));
 
-// console.log(hashmap.set("rama", "rama with lower case r"));
+console.log(test.set("ice cream", "white"));
 
-console.log(hashmap.set("Sita", "sita value"));
+console.log(test.set("jacket", "blue"));
 
-console.log(hashmap.set("sita", "sita with lower case s"));
+console.log(test.set("kite", "pink"));
 
-// console.log(hashmap.set("Sita", "sita value"));
+console.log(test.set("lion", "golden"));
 
-console.log(hashmap.set("rama", "rama with lower case r"));
+console.log(test.length());
 
-console.log(hashmap.set("Rama", "rama value"));
+console.log(test.set("kite", "white"));
 
-// console.log(hashmap.get("preslaw"));
+console.log(test.set("lion", "animal"));
 
-// console.log(hashmap.has("preslaw"));
+console.log(test.length());
 
-// console.log(hashmap.get("Rama"));
+console.log(test.set("moon", "silver"));
 
-// console.log(hashmap.remove("Sita"));
+console.log(test.length());
 
-// console.log(hashmap.get("Rama"));
+console.log(test.set("jacket", "worn"));
 
-// console.log(hashmap.length());
+console.log(test.set("kite", "green"));
 
-// console.log(hashmap.clear());
+console.log(test.set("lion", "king"));
 
-console.log(hashmap.keys());
+console.log(test.set("dog", "black"));
 
-console.log(hashmap.values());
+console.log(test.set("cat", "black"));
+
+console.log(test.set("horse", "animal"));
+
+console.log(test.set("mice", "white"));
+
+console.log(test.set("parrot", "dancing"));
+
+console.log(test.length());
+
+console.log(test.get("apple"));
+
+console.log(test.has("apple"));
+
+console.log(test.length());
+
+// console.log(test.remove("dog"));
+
+console.log(test.length());
+
+console.log(test.get("lion"));
+
+// console.log(test.clear());
+
+console.log(test.keys());
+
+console.log(test.values());
+
+console.log(test.entries());
