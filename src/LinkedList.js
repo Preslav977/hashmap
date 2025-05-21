@@ -184,17 +184,23 @@ class LinkedList {
     let currentNode = this.head;
 
     if (currentNode === null) {
-      return false;
+      return null;
     }
 
     if (currentNode.key === key) {
       this.head = this.head.nextNode;
+
+      this.countNodes--;
+
       return this.head;
     }
 
     while (currentNode !== null) {
       if (currentNode.key === key) {
         previousNode.nextNode = currentNode.nextNode;
+
+        this.countNodes--;
+
         return previousNode;
       }
 
