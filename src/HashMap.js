@@ -108,7 +108,13 @@ class HashMap {
       (buckets) => buckets.head !== null,
     );
 
-    filterKeysIfExist.map((bucket) => pushKeys.push(bucket.head.key));
+    filterKeysIfExist.map((bucket) => {
+      while (bucket.head !== null) {
+        pushKeys.push(bucket.head.key);
+
+        bucket.head = bucket.head.nextNode;
+      }
+    });
 
     return pushKeys;
   }

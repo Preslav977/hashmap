@@ -34,13 +34,13 @@ console.log(hashmap.set("Rama", "rama value"));
 
 // console.log(hashmap.has("preslaw"));
 
-console.log(hashmap.get("Rama"));
+// console.log(hashmap.get("Rama"));
 
-console.log(hashmap.remove("Sita"));
+// console.log(hashmap.remove("Sita"));
 
-console.log(hashmap.get("Rama"));
+// console.log(hashmap.get("Rama"));
 
-console.log(hashmap.length());
+// console.log(hashmap.length());
 
 // console.log(hashmap.clear());
 
