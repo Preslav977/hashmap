@@ -104,19 +104,45 @@ class HashMap {
   keys() {
     const pushKeys = [];
 
-    const filterKeysIfExist = buckets.filter(
+    const createCopyOfBuckets = [...buckets];
+
+    const filterKeysIfExist = createCopyOfBuckets.filter(
       (buckets) => buckets.head !== null,
     );
 
-    filterKeysIfExist.map((bucket) => {
-      while (bucket.head !== null) {
-        pushKeys.push(bucket.head.key);
+    filterKeysIfExist.filter((bucket) => {
+      const copyOfBuckets = Object.assign({}, bucket);
 
-        bucket.head = bucket.head.nextNode;
+      while (copyOfBuckets.head !== null) {
+        pushKeys.push(copyOfBuckets.head.key);
+
+        copyOfBuckets.head = copyOfBuckets.head.nextNode;
       }
     });
 
     return pushKeys;
+  }
+
+  values() {
+    const pushValues = [];
+
+    const createCopyOfBuckets = [...buckets];
+
+    const filterValuesIfExist = createCopyOfBuckets.filter(
+      (buckets) => buckets.head !== null,
+    );
+
+    filterValuesIfExist.filter((bucket) => {
+      const copyOfBuckets = Object.assign({}, bucket);
+
+      while (copyOfBuckets.head !== null) {
+        pushValues.push(copyOfBuckets.head.value);
+
+        copyOfBuckets.head = copyOfBuckets.head.nextNode;
+      }
+    });
+
+    return pushValues;
   }
 }
 

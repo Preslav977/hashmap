@@ -45,3 +45,5 @@ console.log(hashmap.set("Rama", "rama value"));
 // console.log(hashmap.clear());
 
 console.log(hashmap.keys());
+
+console.log(hashmap.values());
