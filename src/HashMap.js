@@ -100,6 +100,18 @@ class HashMap {
       findKeys.countNodes = 0;
     }
   }
+
+  keys() {
+    const pushKeys = [];
+
+    const filterKeysIfExist = buckets.filter(
+      (buckets) => buckets.head !== null,
+    );
+
+    filterKeysIfExist.map((bucket) => pushKeys.push(bucket.head.key));
+
+    return pushKeys;
+  }
 }
 
 export default HashMap;
