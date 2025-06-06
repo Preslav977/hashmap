@@ -28,11 +28,11 @@ class HashMap {
   set(key, value) {
     const index = this.hash(key);
 
-    const newBuckets = [...buckets];
-
     if (this.capacity * this.loadFactor > 12.8) {
       for (let i = 0; i < 32; i++) {
         const linkedList = new LinkedList();
+
+        const newBuckets = [...buckets];
 
         newBuckets.push(linkedList);
       }
@@ -47,6 +47,7 @@ class HashMap {
         return findNodeWithThatKey;
       }
     }
+    console.log(buckets);
   }
 
   get(key) {

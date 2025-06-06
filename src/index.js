@@ -26,17 +26,17 @@ console.log(test.set("kite", "pink"));
 
 console.log(test.set("lion", "golden"));
 
-console.log(test.length());
+// console.log(test.length());
 
 console.log(test.set("kite", "white"));
 
 console.log(test.set("lion", "animal"));
 
-console.log(test.length());
+// console.log(test.length());
 
 console.log(test.set("moon", "silver"));
 
-console.log(test.length());
+// console.log(test.length());
 
 console.log(test.set("jacket", "worn"));
 
@@ -54,13 +54,13 @@ console.log(test.set("mice", "white"));
 
 console.log(test.set("parrot", "dancing"));
 
-console.log(test.length());
+// console.log(test.length());
 
-console.log(test.get("apple"));
+// console.log(test.get("apple"));
 
-console.log(test.has("apple"));
+// console.log(test.has("apple"));
 
-console.log(test.length());
+// console.log(test.length());
 
 // console.log(test.remove("dog"));
 
