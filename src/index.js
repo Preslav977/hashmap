@@ -64,14 +64,14 @@ console.log(test.length());
 
 // console.log(test.remove("dog"));
 
-console.log(test.length());
+// console.log(test.length());
 
-console.log(test.get("lion"));
+// console.log(test.get("lion"));
 
 // console.log(test.clear());
 
-console.log(test.keys());
+// console.log(test.keys());
 
-console.log(test.values());
+// console.log(test.values());
 
-console.log(test.entries());
+// console.log(test.entries());

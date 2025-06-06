@@ -28,15 +28,17 @@ class HashMap {
   set(key, value) {
     const index = this.hash(key);
 
+    const newBuckets = [...buckets];
+
     if (this.capacity * this.loadFactor > 12.8) {
       for (let i = 0; i < 32; i++) {
         const linkedList = new LinkedList();
 
-        buckets.push(linkedList);
+        newBuckets.push(linkedList);
       }
     } else {
       if (!buckets[index].contains(key)) {
-        return buckets[index].prepend(key, value);
+        return buckets[index].append(key, value);
       } else {
         let findNodeWithThatKey = buckets[index].at(key);
 

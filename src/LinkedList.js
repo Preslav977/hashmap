@@ -16,17 +16,23 @@ class LinkedList {
       this.head = newNode;
 
       return this.head;
-    } else {
-      this.tail = new Node(key, value);
+    }
 
-      this.head.nextNode = this.tail;
+    if (!this.tail) {
+      this.tail = new Node(value);
 
       this.countNodes += 1;
 
-      this.head = this.tail;
-
-      return this.head;
+      return this.tail;
     }
+
+    const newNode = new Node(value);
+
+    this.head.nextNode = this.tail;
+
+    this.tail.nextNode = newNode;
+
+    return this.head;
   }
 
   prepend(key, value) {
