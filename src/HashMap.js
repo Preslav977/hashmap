@@ -1,17 +1,19 @@
 import LinkedList from "./LinkedList.js";
 
-const buckets = [];
-
-for (let i = 0; i < 16; i++) {
-  const linkedList = new LinkedList();
-
-  buckets.push(linkedList);
-}
+const linkedList = new LinkedList();
 
 class HashMap {
   loadFactor = 0.8;
 
   capacity = 16;
+
+  constructor() {
+    this.buckets = [];
+
+    for (let i = 0; i < 16; i++) {
+      this.buckets.push(linkedList);
+    }
+  }
 
   hash(key) {
     let hashCode = 0;
@@ -26,28 +28,16 @@ class HashMap {
   }
 
   set(key, value) {
-    const index = this.hash(key);
-
-    if (this.capacity * this.loadFactor > 12.8) {
-      for (let i = 0; i < 32; i++) {
-        const linkedList = new LinkedList();
-
-        const newBuckets = [...buckets];
-
-        newBuckets.push(linkedList);
-      }
-    } else {
-      if (!buckets[index].contains(key)) {
-        return buckets[index].append(key, value);
-      } else {
-        let findNodeWithThatKey = buckets[index].at(key);
-
-        findNodeWithThatKey.value = value;
-
-        return findNodeWithThatKey;
-      }
-    }
-    console.log(buckets);
+    console.log(this.buckets);
+    // console.log(buckets);
+    // const index = this.hash(key);
+    // if (!buckets[index].contains(key)) {
+    //   return buckets[index].append(key, value);
+    // } else {
+    //   let findNodeWithThatKey = buckets[index].at(key);
+    //   findNodeWithThatKey.value = value;
+    //   return findNodeWithThatKey;
+    // }
   }
 
   get(key) {
