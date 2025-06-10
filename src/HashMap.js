@@ -1,7 +1,5 @@
 import LinkedList from "./LinkedList.js";
 
-const linkedList = new LinkedList();
-
 class HashMap {
   loadFactor = 0.8;
 
@@ -10,7 +8,9 @@ class HashMap {
   constructor() {
     this.buckets = [];
 
-    for (let i = 0; i < 16; i++) {
+    for (let i = 0; i < this.capacity; i++) {
+      const linkedList = new LinkedList();
+
       this.buckets.push(linkedList);
     }
   }
@@ -28,25 +28,37 @@ class HashMap {
   }
 
   set(key, value) {
-    console.log(this.buckets);
-    // console.log(buckets);
-    // const index = this.hash(key);
-    // if (!buckets[index].contains(key)) {
-    //   return buckets[index].append(key, value);
-    // } else {
-    //   let findNodeWithThatKey = buckets[index].at(key);
-    //   findNodeWithThatKey.value = value;
-    //   return findNodeWithThatKey;
-    // }
+    const index = this.hash(key);
+
+    if (this.capacity * this.loadFactor > 12.8) {
+      console.log("The capacity is filled!");
+    } else {
+      if (!this.buckets[index].contains(key)) {
+        return this.buckets[index].append(key, value);
+        // const getEntriesFromHashMap = this.entries().flat();
+
+        // console.log(getEntriesFromHashMap);
+
+        // const test = getEntriesFromHashMap.forEach((list) => this.hash(list));
+
+        // console.log(this.buckets);
+
+        // return test;
+      } else {
+        let findNodeWithThatKey = this.buckets[index].at(key);
+        findNodeWithThatKey.value = value;
+        return findNodeWithThatKey;
+      }
+    }
   }
 
   get(key) {
     const index = this.hash(key);
 
-    if (index < 0 || index >= buckets.length) {
+    if (index < 0 || index >= this.buckets.length) {
       throw new Error("Trying to access index out of bounds");
     }
-    const findIfHashExistsWithThatKey = buckets[index].at(key);
+    const findIfHashExistsWithThatKey = this.buckets[index].at(key);
 
     if (findIfHashExistsWithThatKey === null) {
       return null;
@@ -60,7 +72,7 @@ class HashMap {
   has(key) {
     const index = this.hash(key);
 
-    if (buckets[index].contains(key)) {
+    if (this.buckets[index].contains(key)) {
       return true;
     }
     return false;
@@ -69,7 +81,7 @@ class HashMap {
   remove(key) {
     const index = this.hash(key);
 
-    if (buckets[index].removeNode(key) !== null) {
+    if (this.buckets[index].removeNode(key) !== null) {
       return true;
     } else {
       return false;
@@ -77,7 +89,9 @@ class HashMap {
   }
 
   length() {
-    const findStoredKeys = buckets.filter((bucket) => bucket.countNodes !== 0);
+    const findStoredKeys = this.buckets.filter(
+      (bucket) => bucket.countNodes !== 0,
+    );
 
     if (findStoredKeys.length === 0) {
       return 0;
@@ -92,7 +106,7 @@ class HashMap {
   }
 
   clear() {
-    const findKeys = buckets.filter(
+    const findKeys = this.buckets.filter(
       (bucket) => bucket.head !== null || bucket.tail !== null,
     );
 
@@ -108,7 +122,7 @@ class HashMap {
   keys() {
     const pushKeys = [];
 
-    const createCopyOfBuckets = [...buckets];
+    const createCopyOfBuckets = [...this.buckets];
 
     const filterKeysIfExist = createCopyOfBuckets.filter(
       (buckets) => buckets.head !== null,
@@ -152,7 +166,7 @@ class HashMap {
   entries() {
     const pushKeyWithValue = [];
 
-    const filterKeyWithValue = buckets.filter(
+    const filterKeyWithValue = this.buckets.filter(
       (buckets) => buckets.head !== null,
     );
 
