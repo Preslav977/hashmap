@@ -19,14 +19,16 @@ class LinkedList {
     }
 
     if (!this.tail) {
-      this.tail = new Node(value);
+      this.tail = new Node(key, value);
 
       this.countNodes += 1;
 
       return this.tail;
     }
 
-    const newNode = new Node(value);
+    const newNode = new Node(key, value);
+
+    this.countNodes += 1;
 
     this.head.nextNode = this.tail;
 

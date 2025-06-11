@@ -28,27 +28,30 @@ class HashMap {
   }
 
   set(key, value) {
-    const index = this.hash(key);
+    let index = this.hash(key);
 
-    if (this.capacity * this.loadFactor > 12.8) {
-      console.log("The capacity is filled!");
-    } else {
-      if (!this.buckets[index].contains(key)) {
-        return this.buckets[index].append(key, value);
-        // const getEntriesFromHashMap = this.entries().flat();
+    if (!this.buckets[index].contains(key)) {
+      console.log(this.buckets[index].prepend(key, value));
 
-        // console.log(getEntriesFromHashMap);
+      if (this.capacity * this.loadFactor < this.length()) {
+        const entries = this.entries();
 
-        // const test = getEntriesFromHashMap.forEach((list) => this.hash(list));
+        // this.buckets = new Array(32);
 
         // console.log(this.buckets);
 
-        // return test;
-      } else {
-        let findNodeWithThatKey = this.buckets[index].at(key);
-        findNodeWithThatKey.value = value;
-        return findNodeWithThatKey;
+        for (let i = 0; i < entries.length; i++) {
+          console.log(entries[i]);
+
+          index = this.hash(entries[i][0]);
+
+          console.log(index);
+        }
       }
+    } else {
+      let findNodeWithThatKey = this.buckets[index].at(key);
+      findNodeWithThatKey.value = value;
+      return findNodeWithThatKey;
     }
   }
 
