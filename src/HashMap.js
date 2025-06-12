@@ -1,12 +1,12 @@
 import LinkedList from "./LinkedList.js";
 
 class HashMap {
-  loadFactor = 0.8;
-
-  capacity = 16;
-
   constructor() {
     this.buckets = [];
+
+    this.loadFactor = 0.8;
+
+    this.capacity = 16;
 
     for (let i = 0; i < this.capacity; i++) {
       const linkedList = new LinkedList();
@@ -36,16 +36,20 @@ class HashMap {
       if (this.capacity * this.loadFactor < this.length()) {
         const entries = this.entries();
 
-        // this.buckets = new Array(32);
+        const { buckets } = new HashMap();
 
-        // console.log(this.buckets);
+        for (let i = 0; i < this.capacity; i++) {
+          const linkedList = new LinkedList();
+
+          buckets.push(linkedList);
+        }
 
         for (let i = 0; i < entries.length; i++) {
-          console.log(entries[i]);
-
           index = this.hash(entries[i][0]);
 
-          console.log(index);
+          buckets[index].prepend(entries[i][0], entries[i][1]);
+
+          this.buckets = buckets;
         }
       }
     } else {

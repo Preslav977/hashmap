@@ -2,41 +2,43 @@ import HashMap from "./HashMap.js";
 
 const test = new HashMap();
 
-console.log(test.set("apple", "red"));
+test.set("apple", "red");
 
 // console.log(test.length());
 
-console.log(test.set("banana", "yellow"));
+test.set("banana", "yellow");
 
-console.log(test.set("carrot", "orange"));
+test.set("carrot", "orange");
 
-console.log(test.set("dog", "brown"));
+test.set("dog", "brown");
 
-console.log(test.set("elephant", "gray"));
+test.set("elephant", "gray");
 
-console.log(test.set("frog", "green"));
+test.set("frog", "green");
 
-console.log(test.set("grape", "purple"));
+test.set("grape", "purple");
 
-console.log(test.set("hat", "black"));
+test.set("hat", "black");
 
-console.log(test.set("ice cream", "white"));
+test.set("ice cream", "white");
 
-console.log(test.set("jacket", "blue"));
+test.set("jacket", "blue");
 
-console.log(test.set("kite", "pink"));
+test.set("kite", "pink");
 
-console.log(test.set("lion", "golden"));
-
-// console.log(test.length());
-
-console.log(test.set("moon", "silver"));
-
-// console.log(test.keys());
+test.set("lion", "golden");
 
 // console.log(test.length());
 
-// console.log(test.set("kite", "white"));
+test.set("moon", "silver");
+
+console.log(test.length());
+
+// console.log(test.length());
+
+test.set("cat", "black");
+
+console.log(test.length());
 
 // console.log(test.set("lion", "animal"));
 
